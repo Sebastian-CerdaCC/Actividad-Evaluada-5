@@ -3,11 +3,8 @@
 import random
 jugadores = int(input("ingrese el numero de jugadores: "))
 while jugadores < 2 or jugadores > 6:
-    if jugadores <= 1:
-        print("el numero de jugadores no puede ser menor a 2")
-        jugadores = int(input("ingrese el numero de jugadores: "))
-    elif jugadores > 6:
-        print("el numero de jugadores no puede ser mayor a 6")
+    if jugadores <= 1 or jugadores > 6:
+        print("el numero de jugadores no puede ser menor a 2 o mayor a 6")
         jugadores = int(input("ingrese el numero de jugadores: "))
     else:
         print("el numero de jugadores es correcto, podemos iniciar el juego")
