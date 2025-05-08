@@ -37,10 +37,10 @@ def recargar ():
 
 
 #funcion para disparar
-def disparar(revolver, jugador):
+def disparar(revolver, jugador, objetivo):
     posicion = random.randint(0, 5)
     if revolver[posicion] == 1:  
-        print(f"¡Bang! {jugador} ha sido eliminado.")
+        print(f"¡Bang! {jugador} disparó a {objetivo},\n")
         return True  
     else:
         print(f"{jugador} ha disparado y no ha pasado nada.")
@@ -65,54 +65,54 @@ def jugar():
         
         while True:
             try:
-                eleccion = int(input("Elige una opción: "))
+                eleccion = int(input("Elige una opción: \n"))
                 if 1 <= eleccion <= len(jugadores_vivos) + 1:
                     break
                 else:
-                    print("Opción inválida. Intenta de nuevo.")
+                    print("Opción inválida. Intenta de nuevo.\n")
             except ValueError:
-                print("Entrada inválida. Por favor, ingresa un número.")
+                print("Entrada inválida. Por favor, ingresa un número.\n")
         
         if eleccion == len(jugadores_vivos) + 1:
             objetivo = jugador
         else:
             objetivo = jugadores_vivos[eleccion - 1]
         
-        print(f"{jugador} ha decidido disparar a {objetivo}.")
+        print(f"{jugador} ha decidido disparar a {objetivo}.\n")
         
         while True:
-            accion = input('Escribe "disparar" para ejecutar el disparo: ').lower()
+            accion = input('Escribe "disparar" para ejecutar el disparo: \n').lower()
             if accion == "disparar":
                 break
             else:
-                print('Entrada inválida. Debes escribir "disparar".')
+                print('Entrada inválida. Debes escribir "disparar".\n')
         
-        disparo_exitoso = disparar(revolver, objetivo)
+        disparo = disparar(revolver, jugador, objetivo)
 
-        if disparo_exitoso:
+        if disparo:
             jugadores_vivos.remove(objetivo)
-            print(f"{objetivo} ha sido eliminado.")
+            print(f"{objetivo} ha sido eliminado.\n")
             revolver = recargar()
             print("El revolver ha sido recargado.\n")
             if turno >= len(jugadores_vivos):
                 turno = 0
         else:
-            print(f"{objetivo} sigue en el juego.")
+            print(f"{objetivo} sigue en el juego.\n")
             if objetivo != jugador:
 
-                print(f"{jugador} ahora debe dispararse a sí mismo.")
+                print(f"{jugador} ahora debe dispararse a sí mismo.\n")
 
                 while True:
-                    accion = input('Escribe "disparar" para ejecutar el disparo: ').lower()
+                    accion = input('Escribe "disparar" para ejecutar el disparo: \n').lower()
                     if accion == "disparar":
                         break
                     else:
-                        print('Entrada inválida. Debes escribir "disparar".')
+                        print('Entrada inválida. Debes escribir "disparar".\n')
                 
-                disparo_exitoso = disparar(revolver, jugador)
-                if disparo_exitoso:
+                disparo = disparar(revolver, jugador, objetivo)
+                if disparo:
                     jugadores_vivos.remove(jugador)
-                    print(f"{jugador} ha sido eliminado.")
+                    print(f"{jugador} ha sido eliminado.\n")
                     revolver = recargar()
                     print("El revolver ha sido recargado.\n")
                 else:
@@ -124,6 +124,6 @@ def jugar():
     print(f"¡Felicidades! {jugadores_vivos[0]} ha ganado el juego.")
 
 
-iniciar = input("¿Quieres iniciar el juego? (si/no): ").lower()
+iniciar = input("¿Quieres iniciar el juego? (si/no): \n").lower()
 if iniciar == "si":
     jugar()
