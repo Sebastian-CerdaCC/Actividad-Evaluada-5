@@ -7,3 +7,4 @@ Repositorio de prueba para el taller de git!
 
 #Aporte de los integrantes:
 > Seba: Hizo todo :D
+> Porfa prueben el código, estoy orgulloso :c
